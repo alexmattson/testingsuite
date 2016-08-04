@@ -13,4 +13,7 @@
 #
 
 class Goal < ActiveRecord::Base
+  validates :title, :details, :user, presence: true
+
+  belongs_to :user
 end

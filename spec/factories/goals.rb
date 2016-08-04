@@ -14,6 +14,8 @@
 
 FactoryGirl.define do
   factory :goal do
-    
+    title {Faker::Hipster.sentence}
+    details {Faker::Lorem.paragraph}
+    user_id {User.all.sample.id}
   end
 end

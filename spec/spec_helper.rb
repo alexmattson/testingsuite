@@ -14,7 +14,7 @@ RSpec.configure do |config|
 end
 
 def create_valid_user
-  visit new_user_url
+  visit new_user_path
   fill_in 'username', :with => "testing_username"
   fill_in 'password', :with => "password"
   click_on "Create User"
@@ -23,7 +23,7 @@ end
 def log_in_valid_user
   user = User.create(username: "testing_username",
                       password: "password")
-  visit new_session_url
+  visit new_session_path
   fill_in 'username', :with => "testing_username"
   fill_in 'password', :with => "password"
   click_on "Log In"
