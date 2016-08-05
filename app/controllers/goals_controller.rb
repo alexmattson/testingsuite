@@ -34,7 +34,6 @@ class GoalsController < ApplicationController
 
   def update
     @goal = Goal.find_by_id(params[:id])
-
     unless current_user.id == @goal.id
       flash[:errors] = "Can not edit someone elses goals"
       redirect_to goal_url(@goal)
