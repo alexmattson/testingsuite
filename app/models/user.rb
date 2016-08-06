@@ -18,6 +18,12 @@ class User < ActiveRecord::Base
   validates :username, :password_digest, :session_token, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
   #assocations
+  has_many :authored_user_comments,
+    foreign_key: :author_id,
+    class_name: :UserComment
+
+  has_many :recieved_user_comments,
+    class_name: :UserComment
 
   #methods
   def self.find_by_credentials(username, password)

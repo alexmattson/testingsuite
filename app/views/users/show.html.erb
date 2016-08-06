@@ -1,0 +1,21 @@
+<h1><%= @user.username %></h1>
+
+
+<h3>Comments</h3>
+
+<% @comments.each do |comment| %>
+  <%= comment.body %> -
+  <%= comment.author.username %>
+  <%= button_to "Delete Comment", "/users/#{@user.id}/comments/#{comment.id}", method: :delete %>
+<% end %>
+
+<form action="<%= user_comments_url(@user.id) %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="comment[user_id]" value="<%= @user.id %>">
+
+  <label>Body
+    <input type="text" name="comment[body]">
+  </label>
+
+  <input type="submit" value="Create Comment">
+</form>
