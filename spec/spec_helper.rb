@@ -28,3 +28,11 @@ def log_in_valid_user
   fill_in 'password', :with => "password"
   click_on "Log In"
 end
+
+def create_valid_user_comment(user)
+  user2 = create :user
+  UserComment.create(author_id: user.id,
+                     user_id: user2.id,
+                     body: "testing user comment")
+  visit user_url(user2)
+end
